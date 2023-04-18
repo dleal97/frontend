@@ -15,7 +15,8 @@
 
 .pyramid {
   width: 25%;
-  background-color: #020230;
+  /*background-color: #020230;*/
+  background: linear-gradient(#0e0124, #22074d);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +36,9 @@
 }
 
 .moneyListItem.active {
-  background-color: teal;
+  background-color: #FF851B;
+  color: black;
+  font-weight: bold;
 }
 
 .moneyListItemNumber {
@@ -67,10 +70,14 @@
   left: 80px;
   font-size: 30px;
   font-weight: 700;
+  color: #FF851B;
+  border-color: #FF851B;
 }
 
 .bottom {
   height: 50%;
+  position: relative;
+  top: 50px;
 }
 
 .trivia {
@@ -89,6 +96,8 @@
   border-radius: 10px;
   border: 2px solid white;
   font-size: 20px;
+  position: relative;
+  top: -20px;
 }
 
 .answers {
@@ -113,7 +122,8 @@
 
 .answer:hover,
 .answer.active {
-  background: mediumblue;
+  background: #FF914D;
+  color: black;
 }
 
 .answer.correct {
@@ -124,7 +134,7 @@
   0%,
   22%,
   42% {
-    background: mediumblue;
+    background: #FF914D;
   }
   20%,
   40%,
@@ -145,7 +155,7 @@
   0%,
   22%,
   42% {
-    background: mediumblue;
+    background: #FF914D;
   }
   20%,
   40%,
@@ -248,3 +258,17 @@
 .logo-header {
 align-items: center;
 }
+
+.logo-interface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  position: relative;
+  top: -170px;
+}
+
+.logo-header-interface {
+  align-items: center;
+}
+

@@ -4,13 +4,14 @@ import Start from "./components/Start";
 import Timer from "./components/Timer";
 import Trivia from "./components/Trivia";
 import axios from "axios";
+import logoT from "./assets/logoT.png";
 
 function App() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [timeOut, setTimeOut] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [earned, setEarned] = useState("$ 0");
+  const [earned, setEarned] = useState("0 pts");
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
@@ -94,21 +95,21 @@ function App() {
   const moneyPyramid = useMemo(
     () =>
       [
-        { id: 1, amount: "pts 100" },
-        { id: 2, amount: "pts 200" },
-        { id: 3, amount: "pts 300" },
-        { id: 4, amount: "pts 500" },
-        { id: 5, amount: "pts 1.000" },
-        { id: 6, amount: "pts 2.000" },
-        { id: 7, amount: "pts 4.000" },
-        { id: 8, amount: "pts 8.000" },
-        { id: 9, amount: "pts 16.000" },
-        { id: 10, amount: "pts 32.000" },
-        { id: 11, amount: "pts 64.000" },
-        { id: 12, amount: "pts 125.000" },
-        { id: 13, amount: "pts 250.000" },
-        { id: 14, amount: "pts 500.000" },
-        { id: 15, amount: "pts 1.000.000" },
+        { id: 1, amount: "100 pts" },
+        { id: 2, amount: "200 pts" },
+        { id: 3, amount: "300 pts" },
+        { id: 4, amount: "500 pts" },
+        { id: 5, amount: "1.000 pts" },
+        { id: 6, amount: "2.000 pts" },
+        { id: 7, amount: "4.000 pts" },
+        { id: 8, amount: "8.000 pts" },
+        { id: 9, amount: "16.000 pts" },
+        { id: 10, amount: "32.000 pts" },
+        { id: 11, amount: "64.000 pts" },
+        { id: 12, amount: "125.000 pts" },
+        { id: 13, amount: "250.000 pts" },
+        { id: 14, amount: "500.000 pts" },
+        { id: 15, amount: "1.000.000 pts" },
       ].reverse(),
     []
   );
@@ -125,6 +126,9 @@ function App() {
       ) : (
         <>
           <div className="main">
+            <div className="logo-header-interface">
+              <img src={logoT} alt="UCOquiz logo" className="logo-interface" />
+            </div>
             {timeOut ? (
               <h1 className="endText">You earned: {earned}</h1>
             ) : (
@@ -156,7 +160,7 @@ function App() {
                 <li
                   className={
                     questionNumber === m.id
-                      ? "moneyListItem active"
+                      ? "moneyListItem  active"
                       : "moneyListItem"
                   }
                 >
