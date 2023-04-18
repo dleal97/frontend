@@ -5,6 +5,8 @@ import Timer from "./components/Timer";
 import Trivia from "./components/Trivia";
 import axios from "axios";
 import logoT from "./assets/logoT.png";
+import React from 'react';
+
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -130,10 +132,11 @@ function App() {
               <img src={logoT} alt="UCOquiz logo" className="logo-interface" />
             </div>
             {timeOut ? (
-              <h1 className="endText">You earned: {earned}</h1>
+              <div className="endGame">
+                <h1 className="endText">Has ganado: {earned}</h1>
+                <button className="toLeaderboard">Tabla de puntuaciones</button>
+              </div>
             ) : (
-              //-> Salto a leaderboard
-              //-> Almaceno earned
               <>
                 <div className="top">
                   <div className="timer">
