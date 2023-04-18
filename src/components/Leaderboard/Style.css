@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
+.App {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*background-color: #002984;*/
+        color: white;
+        /*margin: 0;*/
+        background-image: url("../assets/wallpaper2.png");
+}
+
+
+
+.board {
+    text-align: center;
+    color: white;
+    background-color: #002984;
+    margin: 0;
+}
+
+.main {
+    text-align: center;
+    color: white;
+    background-color: #002984;
+    margin: 0;    
+}
+
+.leaderboard {
+    color: orange;
+}
+
+.logo-leaderboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    top: -20px;
+}
+
+.logo-header {
+    align-items: center;
+}
+
+.Inicio {
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: orange;
+    color: black;
+    font-weight: bolder;
+    position:relative;
+    top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile{
+    margin: 0;
+}
+
+#profile .flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    text-align: left;
+}
+
+#profile .flex .item{
+    display: flex;
+    align-items: center;
+}
+
+#profile .flex .info{
+   padding: 0em;
+}
+    
