@@ -6,8 +6,17 @@ export default function Start({ setUsername, setPassword }) {
   const inputRefPass = useRef();
 
   const handleClick = () => {
-    inputRef.current.value && setUsername(inputRef.current.value);
-    inputRefPass.current.value && setPassword(inputRefPass.current.value);
+    const username = inputRef.current.value;
+    const password = inputRefPass.current.value;
+
+    fetch(`http://localhost:3001/users/validate-user?username=${username}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data === true) {
+        setUsername(username);
+        setPassword(password);
+      }
+    });
   };
 
   return (
