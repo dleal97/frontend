@@ -234,6 +234,12 @@
   outline: none;
 }
 
+.startButton:hover,
+.startButton:focus {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
 .startButton {
   width: 70%;
   border: none;
@@ -256,6 +262,12 @@
   background-color: #FF914D;
   position: relative;
   bottom: -50px;
+}
+
+.toLeaderboard:hover,
+.toLeaderboard:focus {
+  outline: 1px solid #fff;
+  outline-offset: -1px;
 }
 
 .endGame {
