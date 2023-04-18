@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import logo from "../assets/logo.png";
+import React from 'react';
+
 
 export default function Start({ setUsername, setPassword }) {
   const inputRef = useRef();
@@ -25,10 +27,10 @@ export default function Start({ setUsername, setPassword }) {
         <img src={logo} alt="Logo de UCOquiz" className="logo"></img>
       </div>
       <div className="start">
-        <input className="startInput" placeholder="username" ref={inputRef} />
+        <input className="startInput" placeholder="usuario" ref={inputRef} />
         <input
           className="passInput"
-          placeholder="password"
+          placeholder="contraseña"
           ref={inputRefPass}
         />
         <button className="startButton" onClick={handleClick}>
