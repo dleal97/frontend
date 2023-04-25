@@ -1,10 +1,10 @@
 //import Board from './components/Board';
-import Board from './components/Leaderboard/Board';
-import './components/Style.css';
+import Board from '../Leaderboard/Board';
+import './Style.css';
 
 function Leaderboard() {
   return (
-    <div className="App">
+    <div className="mainApp">
         <Board></Board>
     </div>
   );

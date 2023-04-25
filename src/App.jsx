@@ -1,20 +1,18 @@
 import "./App.css";
 import { useEffect, useMemo, useState } from "react";
-import Start from "./components/Start";
 import Timer from "./components/Timer";
 import Trivia from "./components/Trivia";
 import axios from "axios";
 import logoT from "./assets/logoT.png";
-import React from 'react';
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
   const [timeOut, setTimeOut] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(1);
   const [earned, setEarned] = useState("0 pts");
   const [questions, setQuestions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:3001/questions").then((response) => {
@@ -22,6 +20,10 @@ function App() {
       setQuestions(response.data);
     });
   }, []);
+
+  function handleRedirect() {
+    return navigate("/leaderboard");
+  }
 
   /*
   const data = [
@@ -122,60 +124,58 @@ function App() {
   }, [questionNumber, moneyPyramid]);
 
   return (
-    <div className="app">
-      {!username || !password ? (
-        <Start setUsername={setUsername} setPassword={setPassword} />
-      ) : (
-        <>
-          <div className="main">
-            <div className="logo-header-interface">
-              <img src={logoT} alt="UCOquiz logo" className="logo-interface" />
+    <>
+      <div className="app">
+        <div className="main">
+          <div className="logo-header-interface">
+            <img src={logoT} alt="UCOquiz logo" className="logo-interface" />
+          </div>
+          {timeOut ? (
+            <div className="endGame">
+              <h1 className="endText">Has ganado: {earned}</h1>
+              <button className="toLeaderboard" onClick={handleRedirect}>
+                Tabla de puntuaciones
+              </button>
             </div>
-            {timeOut ? (
-              <div className="endGame">
-                <h1 className="endText">Has ganado: {earned}</h1>
-                <button className="toLeaderboard">Tabla de puntuaciones</button>
-              </div>
-            ) : (
-              <>
-                <div className="top">
-                  <div className="timer">
-                    <Timer
-                      setTimeOut={setTimeOut}
-                      questionNumber={questionNumber}
-                    />
-                  </div>
-                </div>
-                <div className="bottom">
-                  <Trivia
-                    data={questions}
-                    questionNumber={questionNumber}
-                    setQuestionNumber={setQuestionNumber}
+          ) : (
+            <>
+              <div className="top">
+                <div className="timer">
+                  <Timer
                     setTimeOut={setTimeOut}
+                    questionNumber={questionNumber}
                   />
                 </div>
-              </>
-            )}
-          </div>
-          <div className="pyramid">
-            <ul className="moneyList">
-              {moneyPyramid.map((m) => (
-                <li
-                  className={
-                    questionNumber === m.id
-                      ? "moneyListItem  active"
-                      : "moneyListItem"
-                  }
-                >
-                  <span className="moneyListItemNumber">{m.id}</span>
-                  <span className="moneyListItemAmount">{m.amount}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      )}
-    </div>
+              </div>
+              <div className="bottom">
+                <Trivia
+                  data={questions}
+                  questionNumber={questionNumber}
+                  setQuestionNumber={setQuestionNumber}
+                  setTimeOut={setTimeOut}
+                />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="pyramid">
+          <ul className="moneyList">
+            {moneyPyramid.map((m) => (
+              <li
+                className={
+                  questionNumber === m.id
+                    ? "moneyListItem  active"
+                    : "moneyListItem"
+                }
+              >
+                <span className="moneyListItemNumber">{m.id}</span>
+                <span className="moneyListItemAmount">{m.amount}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   );
 }
 

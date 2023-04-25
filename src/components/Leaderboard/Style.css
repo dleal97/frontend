@@ -2,7 +2,7 @@
 
 
 
-.App {
+.mainApp {
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -10,7 +10,7 @@
         /*background-color: #002984;*/
         color: white;
         /*margin: 0;*/
-        background-image: url("../assets/wallpaper2.png");
+        background-image: url("../../assets/wallpaper2.png");
 }
 
 
@@ -22,7 +22,7 @@
     margin: 0;
 }
 
-.main {
+.mainBoard {
     text-align: center;
     color: white;
     background-color: #002984;
@@ -30,7 +30,7 @@
 }
 
 .leaderboard {
-    color: orange;
+    color: #FF914D;
 }
 
 .logo-leaderboard {
@@ -42,7 +42,7 @@
     top: -20px;
 }
 
-.logo-header {
+.logo-headerBoard {
     align-items: center;
 }
 
@@ -52,7 +52,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    background-color: orange;
+    background-color: #FF914D;
     color: black;
     font-weight: bolder;
     position:relative;
@@ -70,6 +70,7 @@
     justify-content: space-between;
     gap: 1em;
     text-align: left;
+    margin: 10px;
 }
 
 #profile .flex .item{
