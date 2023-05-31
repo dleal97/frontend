@@ -22,8 +22,11 @@ export default function Start({ setUsername, setPassword }) {
         }
       });
 
+    // if (username) {
+    //   return navigate("/game");
+    // }
     if (username) {
-      return navigate("/game");
+      return navigate("/game", { state: { username, password } });
     }
   };
 

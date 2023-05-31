@@ -46,6 +46,15 @@
     align-items: center;
 }
 
+.myPosition{
+    position: relative;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
 .Inicio {
     width: 70%;
     border: none;

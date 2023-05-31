@@ -5,7 +5,7 @@ import Trivia from "./components/Trivia";
 import axios from "axios";
 import logoT from "./assets/logoT.png";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function App() {
   const [timeOut, setTimeOut] = useState(false);
@@ -14,15 +14,31 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const username = location.state ? location.state.username : "";
+
   useEffect(() => {
     axios.get("http://localhost:3001/questions").then((response) => {
-      console.log(response.data);
       setQuestions(response.data);
     });
   }, []);
 
-  function handleRedirect() {
-    return navigate("/leaderboard");
+  async function updateScore(username, nuevaPuntuacion) {
+    try {
+      await axios.put("http://localhost:3001/end-game", {
+        username,
+        newScore: nuevaPuntuacion,
+      });
+    } catch (error) {
+      console.error("Error al enviar la solicitud:", error);
+    }
+  }
+
+  async function handleRedirect(username, puntuacion) {
+    const scoreNumber = parseInt(puntuacion.split(" ")[0], 10);
+    return updateScore(username, scoreNumber).then(() =>
+      navigate("/leaderboard", { state: { username } })
+    );
   }
 
   /*
@@ -133,7 +149,10 @@ function App() {
           {timeOut ? (
             <div className="endGame">
               <h1 className="endText">Has ganado: {earned}</h1>
-              <button className="toLeaderboard" onClick={handleRedirect}>
+              <button
+                className="toLeaderboard"
+                onClick={() => handleRedirect(username, earned)}
+              >
                 Tabla de puntuaciones
               </button>
             </div>
