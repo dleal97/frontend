@@ -25,6 +25,14 @@ CREATE DATABASE IF NOT EXISTS `dbs7575347` DEFAULT CHARACTER SET utf8 COLLATE ut
 USE `dbs7575347`;
 
 -- --------------------------------------------------------
+CREATE TABLE `UCOquizPlayers` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `score` int(11)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `UCOquizPlayers` (`username`, `password`, `score`) VALUES
+('Angel', '123', 500);
 
 --
 -- Estructura de tabla para la tabla `Answer`

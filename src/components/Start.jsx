@@ -3,8 +3,10 @@ import logo from "../assets/logo.png";
 import React from "react";
 import "../App.css";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function Start({ setUsername, setPassword }) {
+export default function Start() {
   const inputRef = useRef();
   const inputRefPass = useRef();
   const navigate = useNavigate();
@@ -17,17 +19,10 @@ export default function Start({ setUsername, setPassword }) {
       .then((response) => response.json())
       .then((data) => {
         if (data === true) {
-          setUsername(username);
-          setPassword(password);
+          return navigate("/game", { state: { username, password } });
         }
+        toast.error('Usuario incorrecto o no registrado!');
       });
-
-    // if (username) {
-    //   return navigate("/game");
-    // }
-    if (username) {
-      return navigate("/game", { state: { username, password } });
-    }
   };
 
   return (
@@ -46,6 +41,7 @@ export default function Start({ setUsername, setPassword }) {
           <button className="startButton" onClick={handleClick}>
             Comenzar
           </button>
+          <ToastContainer />
         </div>
       </div>
     </div>
