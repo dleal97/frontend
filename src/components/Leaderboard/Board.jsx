@@ -4,14 +4,15 @@ import leaderboard from "../../assets/leaderboard.png";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import "../../App.css";
+import API_URL from "../environment.js";
 
 export default function Board({ username }) {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users/all").then((response) => setUsers(response.data));
-    axios.get("http://localhost:3001/users/position").then((response) => setUsers(response.data));
+    axios.get(`${API_URL}/users/all`).then((response) => setUsers(response.data));
+    axios.get(`${API_URL}/users/position`).then((response) => setUsers(response.data));
   }, []);
 
   function handleClick() {

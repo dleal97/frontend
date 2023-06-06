@@ -6,6 +6,7 @@ import leaderboard from "../../assets/leaderboard.png";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../App.css";
+import API_URL from "../environment.js";
 
 function Leaderboard() {
   const [users, setUsers] = useState([]);
@@ -16,10 +17,10 @@ function Leaderboard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/users/all")
+      .get(`${API_URL}/users/all`)
       .then((response) => setUsers(response.data));
     axios
-      .get(`http://localhost:3001/users/position?username=${username}`)
+      .get(`${API_URL}/users/position?username=${username}`)
       .then((response) => setPosition(response.data.position));
   }, [username]);
 

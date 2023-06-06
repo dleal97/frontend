@@ -3,8 +3,9 @@ import logo from "../assets/logo.png";
 import React from "react";
 import "../App.css";
 import { useNavigate } from "react-router";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import API_URL from "../environment.js";
 
 export default function Start() {
   const inputRef = useRef();
@@ -14,14 +15,13 @@ export default function Start() {
   const handleClick = () => {
     const username = inputRef.current.value;
     const password = inputRefPass.current.value;
-
-    fetch(`http://localhost:3001/users/validate-user?username=${username}`)
+    fetch(`${API_URL}/users/validate-user?username=${username}`)
       .then((response) => response.json())
       .then((data) => {
         if (data === true) {
           return navigate("/game", { state: { username, password } });
         }
-        toast.error('Usuario incorrecto o no registrado!');
+        toast.error("Usuario incorrecto o no registrado!");
       });
   };
 

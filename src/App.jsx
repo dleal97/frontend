@@ -6,6 +6,7 @@ import axios from "axios";
 import logoT from "./assets/logoT.png";
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import API_URL from "../environment.js";
 
 function App() {
   const [timeOut, setTimeOut] = useState(false);
@@ -18,14 +19,14 @@ function App() {
   const username = location.state ? location.state.username : "";
 
   useEffect(() => {
-    axios.get("http://localhost:3001/questions").then((response) => {
+    axios.get(`${API_URL}/questions`).then((response) => {
       setQuestions(response.data);
     });
   }, []);
 
   async function updateScore(username, nuevaPuntuacion) {
     try {
-      await axios.put("http://localhost:3001/end-game", {
+      await axios.put(`${API_URL}/end-game`, {
         username,
         newScore: nuevaPuntuacion,
       });
