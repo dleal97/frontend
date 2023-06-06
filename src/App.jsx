@@ -6,7 +6,7 @@ import axios from "axios";
 import logoT from "./assets/logoT.png";
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import API_URL from "../environment.js";
+import API_URL from "./environment.js";
 
 function App() {
   const [timeOut, setTimeOut] = useState(false);

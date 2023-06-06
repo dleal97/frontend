@@ -6,7 +6,7 @@ import leaderboard from "../../assets/leaderboard.png";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../App.css";
-import API_URL from "../environment.js";
+import API_URL from "../../environment.js";
 
 function Leaderboard() {
   const [users, setUsers] = useState([]);
